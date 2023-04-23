@@ -2,6 +2,7 @@ const weatherForm = document.querySelector("form");
 const searchInput = document.querySelector(".searchInput");
 const searchButton = document.querySelector(".searchBtn");
 
+const weatherResults = document.querySelector(".weather-results");
 const cityName = document.querySelector(".cityName");
 const temperature = document.querySelector(".temperature");
 const feelsLike = document.querySelector(".feelsLike");
@@ -14,6 +15,7 @@ weatherForm.addEventListener("submit", (e) => {
 
 searchButton.addEventListener("click", async () => {
   if (searchInput.value === "") return;
+  weatherResults.classList.add("active");
   const weatherData = await getWeather(searchInput.value);
   cityName.textContent = weatherData.location.name;
   temperature.textContent = `Temperature: ${weatherData.current.temp_f}°F`;
